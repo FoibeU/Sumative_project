@@ -10,6 +10,26 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+       <!--The inline scripts for notifications -->
+       
+        <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+    const alertsContainer = document.getElementById('alerts');
+
+    const alerts = [
+        "Upcoming room inspections on July 25th.",
+        "Maintenance deadlines for HVAC systems on August 1st.",
+        "Urgent resident request: Leak in Room 302."
+    ];
+
+    alerts.forEach(alert => {
+        const alertElement = document.createElement('p');
+        alertElement.textContent = alert;
+        alertsContainer.appendChild(alertElement);
+    });
+});
+        </script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -37,13 +57,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            
-                            <a class="nav-link" href="alerts.html">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Alert and notifications
                             </a>
-                            
-                            <a class="nav-link" href="mentainace.html">
+                         <a class="nav-link" href="mentainace.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Maintenance Request
                             </a>
@@ -62,12 +80,13 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        
                         <!-- Image with Overlay Text -->
                         <div class="image-container">
                             <img src="https://housing.unm.edu/residence-halls/images/buildings/src-apts-thumbnail-kg-web.png" alt="University Image" class="img-fluid">
-                            <div class="overlay" style="color: whitesmoke ">
-                                <div class="overlay-text"> Welcome to University Residence Management System staff Dashboard</div>
+                            <div class="overlay" style="background-color:#3399ff">
+                                <div class="overlay-text">Here are Notifications</div>
+                                <!-- Alerts and Notifications -->
+                                <div id="alerts-container"></div>
                             </div>
                         </div>
                     </div>
@@ -93,6 +112,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-        <script src="js/theme.js"></script> 
+        <script src="js/theme.js"></script>
     </body>
 </html>

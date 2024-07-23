@@ -1,0 +1,10 @@
+{
+  "rooms": [
+    { "id": 1, "room": "Room 1", "type": "Single", "status": "vacant", "resident": "-", "amenities": "Wi-Fi, AC" },
+    { "id": 2, "room": "Room 2", "type": "Double", "status": "occupied", "resident": "John Doe", "amenities": "Wi-Fi, AC, TV" },
+    { "id": 3, "room": "Room 3", "type": "Single", "status": "maintenance", "resident": "-", "amenities": "Wi-Fi, AC" },
+    { "id": 4, "room": "Room 4", "type": "Single", "status": "vacant", "resident": "-", "amenities": "Wi-Fi, AC" },
+    { "id": 5, "room": "Room 5", "type": "Double", "status": "occupied", "resident": "Jane Smith", "amenities": "Wi-Fi, AC, TV" },
+    { "id": 6, "room": "Room 6", "type": "Single", "status": "maintenance", "resident": "-", "amenities": "Wi-Fi, AC" }
+  ]
+}

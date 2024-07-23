@@ -10,6 +10,62 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+    const maintenanceData = [
+        { room: '101', request: 'Fix the AC', status: 'pending', notes: '' },
+        { room: '202', request: 'Plumbing issue', status: 'ongoing', notes: '' },
+        { room: '303', request: 'Replace lights', status: 'completed', notes: '' }
+    ];
+
+    const maintenanceTableBody = document.querySelector('#maintenanceTable tbody');
+
+    function renderTable(data) {
+        maintenanceTableBody.innerHTML = '';
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.room}</td>
+                <td>${item.request}</td>
+                <td>${item.status}</td>
+                <td>${item.notes}</td>
+                <td><button class="btn btn-primary btn-sm add-note" data-room="${item.room}">Add Note</button></td>
+            `;
+            maintenanceTableBody.appendChild(row);
+        });
+
+        document.querySelectorAll('.add-note').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const room = event.target.getAttribute('data-room');
+                const note = prompt('Enter your note:');
+                if (note) {
+                    const maintenanceItem = maintenanceData.find(item => item.room === room);
+                    maintenanceItem.notes += ` ${note}`;
+                    renderTable(maintenanceData);
+                }
+            });
+        });
+    }
+
+    function filterData() {
+        const roomFilter = document.getElementById('roomFilter').value.toLowerCase();
+        const statusFilter = document.getElementById('statusFilter').value;
+
+        const filteredData = maintenanceData.filter(item => {
+            const roomMatch = item.room.toLowerCase().includes(roomFilter);
+            const statusMatch = !statusFilter || item.status === statusFilter;
+            return roomMatch && statusMatch;
+        });
+
+        renderTable(filteredData);
+    }
+
+    document.getElementById('roomFilter').addEventListener('input', filterData);
+    document.getElementById('statusFilter').addEventListener('change', filterData);
+
+    renderTable(maintenanceData);
+});
+        </script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -37,12 +93,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            
                             <a class="nav-link" href="alerts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Alert and notifications
                             </a>
-                            
                             <a class="nav-link" href="mentainace.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Maintenance Request
@@ -63,14 +117,39 @@
                 <main>
                     <div class="container-fluid px-4">
                         
-                        <!-- Image with Overlay Text -->
-                        <div class="image-container">
-                            <img src="https://housing.unm.edu/residence-halls/images/buildings/src-apts-thumbnail-kg-web.png" alt="University Image" class="img-fluid">
-                            <div class="overlay" style="color: whitesmoke ">
-                                <div class="overlay-text"> Welcome to University Residence Management System staff Dashboard</div>
-                            </div>
-                        </div>
-                    </div>
+                       
+                       
+
+                        <!-- Maintenance Requests Section -->
+                         <div class="mt-4 maintenance-requests">
+    <h2>Maintenance Requests </h2>
+    <div class="filter-container mb-3">
+        <input type="text" id="roomFilter" class="form-control" placeholder="Enter room number">
+    </div>
+    <div class="filter-container mb-3">
+        <select id="statusFilter" class="form-select">
+            <option value="">All</option>
+            <option value="pending">Pending</option>
+            <option value="ongoing">Ongoing</option>
+            <option value="completed">Completed</option>
+        </select>
+    </div>
+    <table id="maintenanceTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Room</th>
+                <th>Request</th>
+                <th>Status</th>
+                <th>Notes</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Maintenance requests will be populated here dynamically -->
+        </tbody>
+    </table>
+</div>
+
                 </main>
                 <footer class="footer py-4 mt-auto">
                     <div class="container-fluid px-4">
@@ -94,5 +173,6 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
         <script src="js/theme.js"></script> 
+        <script src="js/maintenance.js"></script> <!-- Add your custom JavaScript file here -->
     </body>
 </html>
