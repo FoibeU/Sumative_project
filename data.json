@@ -1,0 +1,59 @@
+{
+    "rooms": [
+      {
+        "roomNumber": "101",
+        "status": "occupied",
+        "resident": "John Doe",
+        "amenities": ["WiFi", "Air Conditioning"]
+      },
+      {
+        "roomNumber": "102",
+        "status": "vacant",
+        "resident": "",
+        "amenities": ["WiFi", "Heater"]
+      },
+      {
+        "roomNumber": "103",
+        "status": "under maintenance",
+        "resident": "Jane Smith",
+        "amenities": ["WiFi", "Air Conditioning"]
+      }
+    ],
+    "maintenanceRequests": [
+      {
+        "id": 1,
+        "roomNumber": "101",
+        "description": "Leaky faucet",
+        "status": "pending"
+      },
+      {
+        "id": 2,
+        "roomNumber": "103",
+        "description": "Broken air conditioner",
+        "status": "ongoing"
+      },
+      {
+        "id": 3,
+        "roomNumber": "102",
+        "description": "Heater not working",
+        "status": "completed"
+      }
+    ],
+    "alerts": [
+      {
+        "id": 1,
+        "message": "Upcoming room inspection for Room 101",
+        "type": "info"
+      },
+      {
+        "id": 2,
+        "message": "Maintenance deadline for Room 103 is tomorrow",
+        "type": "warning"
+      },
+      {
+        "id": 3,
+        "message": "Urgent: Resident in Room 102 needs assistance",
+        "type": "urgent"
+      }
+    ]
+  }
