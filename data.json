@@ -1,7 +1,7 @@
 {
     "rooms": [
       {
-        "roomNumber": "101",
+        "roomNumber": "102",
         "status": "occupied",
         "resident": "John Doe",
         "amenities": ["WiFi", "Air Conditioning"]
