@@ -4,19 +4,19 @@
         "roomNumber": "101",
         "status": "occupied",
         "resident": "John Doe",
-        "amenities": ["Wi-Fi", "Air Conditioning"]
+        "amenities": ["WiFi", "Air Conditioning"]
       },
       {
         "roomNumber": "102",
         "status": "vacant",
         "resident": "",
-        "amenities": ["Wi-Fi", "Heater"]
+        "amenities": ["WiFi", "Heater"]
       },
       {
         "roomNumber": "103",
         "status": "under maintenance",
         "resident": "Jane Smith",
-        "amenities": ["Wi-Fi", "Air Conditioning"]
+        "amenities": ["WiFi", "Air Conditioning"]
       }
     ],
     "maintenanceRequests": [
